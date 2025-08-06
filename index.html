@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Scheduler</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Task Scheduler</h1>
+    <form method="post">
+        <div id="tasks">
+            <div class="task">
+                <input type="text" name="name" placeholder="Task Name" required>
+                <input type="number" name="burst_time" placeholder="Burst Time" required>
+                <input type="number" name="priority" placeholder="Priority" required>
+                <input type="number" name="arrival_time" placeholder="Arrival Time" required>
+            </div>
+        </div>
+        <button type="button" onclick="addTask()">Add Task</button>
+
+        <h3>Select Scheduling Algorithm:</h3>
+        <input type="radio" name="algorithm" value="rr" required> Round Robin
+        <input type="radio" name="algorithm" value="sjf"> Shortest Job First
+        <input type="radio" name="algorithm" value="priority"> Priority Scheduling
+
+        <div>
+            <input type="number" name="time_quantum" placeholder="Time Quantum (only for RR)">
+        </div>
+
+        <br>
+        <input type="submit" value="Schedule Tasks">
+    </form>
+
+   <script>
+    function addTask() {
+        const taskDiv = document.createElement("div");
+        taskDiv.classList.add("task");
+        taskDiv.innerHTML = `
+            <input type="text" name="name" placeholder="Task Name" required>
+            <input type="number" name="burst_time" placeholder="Burst Time" required>
+            <input type="number" name="priority" placeholder="Priority" required>
+            <input type="number" name="arrival_time" placeholder="Arrival Time" required>
+        `;
+        document.getElementById("tasks").appendChild(taskDiv);
+    }
+</script>
+</body>
+</html>
